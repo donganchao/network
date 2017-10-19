@@ -7,4 +7,13 @@
 2.局域网下不同主机测试：（client.cpp文件中line28，server端地址为对应server端主机ip地址）  
   ——确保两台主机在同一局域网中，作server端主机查本机ip地址，命令：ifconfig（linux）/ipconfig（Windows），client端修改文件对应地址并ping该ip地址保证连通；  
   ——注意防火墙策略，如果不通可能是被防火墙过滤，关闭防火墙命令：service iptables stop；  
-  ——其他步骤参考本地测试时步骤；  
+  ——其他步骤参考本地测试时步骤；    
+  
+# 基于c/s的广播通信（10/19）
+## 使用说明：（利用mininet进行）
+1.linux下将两个c++文件用g++编译，命令：g++ broadcast_client.cpp -o b_client  g++ broadcast_server.cpp -o b_server；  
+2.启动mininet并创建1交换机3主机的网络拓扑（s1-h1,s1-h2,s1-h3），命令：sudo mn --topo single,3；    
+3.用命令：xterm h1 h2 h3打开3主机的终端，3主机地址分别为10.0.0.1/255.0.0.0，10.0.0.2/255.0.0.0，10.0.0.3/255.0.0.0，可用route命令查询各自路由表；  
+4.将h1作为server端，h2和h3作为client端，server端一定要有默认网关，否则会出现“network is unreachable”的问题，该实验中添加的默认网关应为10.255.255.254，命令：route add -net default gw 10.255.255.254；     
+5.在xterm终端运行各自程序，h1运行b_server，h2和h3运行b_client，命令：./b_server  ./b_client；  
+
