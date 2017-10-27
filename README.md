@@ -15,5 +15,10 @@
 2.启动mininet并创建1交换机3主机的网络拓扑（s1-h1,s1-h2,s1-h3），命令：sudo mn --topo single,3；    
 3.用命令：xterm h1 h2 h3打开3主机的终端，3主机地址分别为10.0.0.1/255.0.0.0，10.0.0.2/255.0.0.0，10.0.0.3/255.0.0.0，可用route命令查询各自路由表；  
 4.将h1作为server端，h2和h3作为client端，server端一定要有默认网关，否则会出现“network is unreachable”的问题，该实验中添加的默认网关应为10.255.255.254，命令：route add -net default gw 10.255.255.254；     
-5.在xterm终端运行各自程序，h1运行b_server，h2和h3运行b_client，命令：./b_server  ./b_client；  
+5.在xterm终端运行各自程序，h1运行b_server，h2和h3运行b_client，命令：./b_server  ./b_client；   
+
+# 基于c/s的组播通信（10/27）    
+## 使用说明：   
+1.（同局域网下1switch3host实验）过程参照基于c/s的广播通信实验，注意server端和client端均要设置默认网关；  
+2.同局域网下实验若加入广播实验中的client端（端口号相同），也可收到server端发送的组播消息；  
 
