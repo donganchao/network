@@ -33,5 +33,14 @@ addrlen是对应的地址长度；
 ### 5.close()关闭连接：  
 *  类似于普通文件操作完后关闭文件的动作；  
 
+## 三、广播和组播的socket：  
+### 1.广播：  
+*  仅为IPv4所有，IPv6中没有广播地址，且广播要采用UDP的方式；  
+*  广播消息仅能在自己的局域网中传播，而不会被路由器转发，而且广播仍要指明端口号；  
+*  广播地址用INADDR_BROADCAST表示（程序中：serveraddress.sin_addr.s_addr = htonl(INADDR_ANY); ）
 
+### 2.组播：  
+*  组播需要用到特定的地址：D类地址（224.0.0.0~239.255.255.255）  
+*  发送消息的一方需要指定一个组播地址（程序中为224.0.0.1），接受消息的一方需要通过setsockopt()函数中IP_ADD_MEMBERSHIP选项加入组播组，结束
+通信时先通过setsockopt()函数中IP_DROP_MEMBERSHIP选项退出组播组，再调用close()函数关闭socket
 
