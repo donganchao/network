@@ -40,7 +40,7 @@ MERGE (A)-[:LIKES{since:'2014'}]->(B: SINGER{name:'B',bloodType:'O'})
 更多关于Cypher参考：  
 https://neo4j.com/docs/developer-manual/3.2/cypher/   
 https://www.w3cschool.cn/neo4j/neo4j_cql_introduction.html  
-
+ 
 * 通过已有数据生成新数据库：  
 1.将[例子](https://neo4j.com/docs/operations-manual/3.2/tutorial/import-tool/#import-tool-basic-example)（movies.csv；actors.csv；roles.csv）通过gedit编辑保存为.csv文件；  
 2.进入bin文件夹下通过neo4j-admin程序创建新数据库： （填写储存.csv文件的绝对路径） ```./neo4j-admin import --mode=csv --database=instance.db --nodes /home/dac/Desktop/movies.csv --nodes /home/dac/Desktop/actors.csv --relationships /home/dac/Desktop/roles.csv```  
