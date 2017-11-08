@@ -38,7 +38,7 @@ CREATE (A: PLAYER {name: 'A', height: '1.70m', nationality: 'China'})
 MERGE (A)-[:LIKES{since:'2014'}]->(B: SINGER{name:'B',bloodType:'O'})
 ```  
 更多关于Cypher参考：  
-https://neo4j.com/docs/developer-manual/3.2/cypher/
+https://neo4j.com/docs/developer-manual/3.2/cypher/   
 https://www.w3cschool.cn/neo4j/neo4j_cql_introduction.html  
 
 * 通过已有数据生成新数据库：  
